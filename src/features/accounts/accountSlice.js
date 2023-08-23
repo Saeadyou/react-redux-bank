@@ -2,6 +2,7 @@ const initialStateAccount = {
   balance: 0,
   loan: 0,
   loanPurpose: "",
+  currency: "$",
 };
 
 export default function accountReducer(state = initialStateAccount, action) {
@@ -14,7 +15,7 @@ export default function accountReducer(state = initialStateAccount, action) {
       if (state.loan > 0) return state;
       return {
         ...state,
-        balance: state.balance - action.payload.amount,
+        balance: state.balance + action.payload.amount,
         loanPurpose: action.payload.purpose,
         loan: action.payload.amount,
       };
